@@ -100,7 +100,7 @@
 .nav-tools {
   position: absolute;
   right: $ui-padding-initial * 3;
-  top: $border-width;
+  top: -($border-width);
   a {
     color: inherit;
     text-decoration: none;

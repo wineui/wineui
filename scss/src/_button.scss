@@ -119,6 +119,9 @@
 
 .button-rounded {
   @include border-radius($ui-height-initial);
+  .button-title {
+    min-width: $ui-height-initial;
+  }
 }
 
 .button-pills {

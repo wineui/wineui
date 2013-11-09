@@ -226,3 +226,8 @@ $input-height-small     : $ui-height-small + $border-width * 2;
 $input-height-initial   : $ui-height-initial + $border-width * 2;         
 $input-height-medium    : $ui-height-medium + $border-width * 2;        
 $input-height-large     : $ui-height-large + $border-width * 2;       
+
+// base tooltip
+// ----------------
+$tooltip-border-before  : 8px;
+$tooltip-border-after   : 6px;

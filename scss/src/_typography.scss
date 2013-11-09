@@ -136,6 +136,24 @@ hr {
 // ----------------
 a {}
 
+// blockquote
+// ----------------
+blockquote {
+  background-color: $graylight;
+  border: {
+    width: 0 0 0 $padding - $padding / 3 - ($border-width * 2);
+    style: solid;
+    color: $gray;
+  }
+  padding: $padding - $padding / 3 $padding;
+  small {
+    font-style: italic;
+    &:before {
+      content: "\2500";
+    }
+  }
+}
+
 // text scale
 // ----------------
 .text-smaller {

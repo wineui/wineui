@@ -1,0 +1,88 @@
+// this file part of wine ui 1.0.1
+// ----------------
+
+// tooltip
+// ----------------
+.tooltip-up,
+.tooltip-down,
+.tooltip-left,
+.tooltip-right {
+  position: relative;
+  &:before,
+  &:after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    vertical-align: middle;
+    height: 0;
+    width: 0;
+    border: {
+      color: transparent;
+      width: $tooltip-border-before;
+      style: solid;
+    };
+  }
+  &:after {
+    border-width: $tooltip-border-after;
+  }
+}
+
+// top direction
+// ----------------
+.tooltip-up {
+  &:before,
+  &:after {
+    border-bottom-color: inherit;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -($tooltip-border-before);
+  }
+  &:after {
+    margin-left: -($tooltip-border-after);
+  }
+}
+
+// bottom direction
+// ----------------
+.tooltip-down {
+  &:before,
+  &:after {
+    border-top-color: inherit;
+    top: 100%;
+    left: 50%;
+    margin-left: -($tooltip-border-before);
+  }
+  &:after {
+    margin-left: -($tooltip-border-after);
+  }
+}
+
+// left direction
+// ----------------
+.tooltip-left {
+  &:before,
+  &:after {
+    border-right-color: inherit;
+    right: 100%;
+    top: 50%;
+    margin-top: -($tooltip-border-before);
+  }
+  &:after {
+    margin-top: -($tooltip-border-after);
+  }
+}
+
+// right direction
+// ----------------
+.tooltip-right {
+  &:before,
+  &:after {
+    border-left-color: inherit;
+    left: 100%;
+    top: 50%;
+    margin-top: -($tooltip-border-before);
+  }
+  &:after {
+    margin-top: -($tooltip-border-after);
+  }
+}

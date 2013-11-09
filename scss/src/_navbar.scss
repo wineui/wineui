@@ -103,6 +103,10 @@
   > .navbar-brand {
     padding: 0 $ui-padding-initial * 3;
   }
+  .nav {
+    display: inline-block;
+    vertical-align: middle;
+  }
 }
 
 // navbar center
