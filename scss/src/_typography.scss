@@ -163,18 +163,22 @@ a {}
 
 // text and vertical align
 // ----------------
-.align:before {
-  content: '';
-  display: inline-block;
-  height: 100%;
-  vertical-align: middle;
+.align {
+  width: 100%;
+  &:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
 }
 
 .align-top,
 .align-bottom,
 .align-middle {
   display: inline-block;
-  max-width: 90%;
+  max-width: 99%;
+  width: 100%;
 }
 
 .align-top {
