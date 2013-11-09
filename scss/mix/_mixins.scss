@@ -1,0 +1,227 @@
+// this file part of wine ui 1.0.1
+// ----------------
+
+// box sizing
+// ----------------
+@mixin box-sizing($value) {
+  -webkit-box-sizing: $value;
+  -moz-box-sizing: $value;
+  box-sizing: $value;
+}
+
+// user select
+// ----------------
+@mixin user-select($value) {
+  -webkit-user-select: $value;
+  -moz-user-select: $value;
+  user-select: $value;
+}
+
+// border radius
+// ----------------
+@mixin border-radius($value) {
+  -webkit-border-radius: $value;
+  -moz-border-radius: $value;
+  border-radius: $value;
+}
+
+// border shadow
+// ----------------
+@mixin box-shadow($value) {
+  -webkit-box-shadow: $value;
+  -moz-box-shadow: $value;
+  box-shadow: $value;
+}
+
+// media
+// ----------------
+@mixin media($media) {
+  @if $media == phone {
+    @media only screen and (max-width: $media-phone) {
+      @content;
+    }
+  }
+  @if $media == tablet {
+    @media only screen and (min-width: $media-phone + 1) and (max-width: $media-tablet + 1) {
+      @content;
+    }
+  }
+  @if $media == desktop {
+    @media only screen and (min-width: $media-tablet) {
+      @content;
+    }
+  }
+  @if $media == wide {
+    @media only screen and (min-width: $media-desktop) {
+      @content;
+    }
+  }
+}
+
+// grid media
+// ----------------
+@mixin grid-media($media) {
+  @include media($media) {
+    .col-#{$media} {
+      float: left;
+      padding-left: $grid-gutter / 2;
+      padding-right: $grid-gutter / 2;
+    }
+    @for $value from 1 through $grid-column {
+      .col-#{$media}-#{$value} {
+        @extend .col-#{$media};
+        width: $grid-screen / $grid-column * $value;
+      }
+      .push-#{$media}-#{$value} {
+        margin-left: $grid-screen / $grid-column * $value;
+      }
+      .pull-#{$media}-#{$value} {
+        margin-right: $grid-screen / $grid-column * $value;
+      }
+    }
+  }
+}
+
+// color palette
+// ----------------
+@mixin color-palette($background, $color) {
+  background-color: $background;
+  border-color: $background;
+  color: $color;
+}
+
+// button color
+// ----------------
+@mixin color-button($background, $background-over, $color) {
+  @include color-palette($background, $color);
+  &:hover {
+    @include color-palette(mix($background, $background-over), $color);
+  }
+  &:active, &.active {
+    @include color-palette($background-over, $color);
+  }
+  &[disabled], &.disabled {
+    @include color-palette(mix($white, $background-over), $color);
+  }
+}
+
+// nav color
+// ----------------
+@mixin color-nav($background, $background-over, $color) {
+  @include color-palette($background, $color);
+  &:hover {
+    @include color-palette(mix($background, $background-over), $color);
+  }
+  &:active, &.active, &.nav-divide {
+    @include color-palette($background-over, $color);
+  }
+  &[disabled], &.disabled {
+    @include color-palette(mix($white, $background-over), $color);
+  }
+}
+
+// color package
+// ----------------
+@mixin color($prefix, $background, $background-over, $color) {
+  // button color
+  // --------------
+  .navbar-#{$prefix} {
+    @include color-palette($background, $color);
+    .navbar-prev,
+    .navbar-next {
+      @include color-button($background, $background-over, $color);
+    }
+    .nav {
+      @include color-palette($background, $color);
+      > li {
+        > .nav-link {
+          @include color-button($background, $background-over, $color);
+        }
+      }
+    }
+  }
+  // button color
+  // --------------
+  .button-#{$prefix} {
+    @include color-button($background, $background-over, $color);
+  }
+  // background
+  // --------------
+  .background-#{$prefix} {
+    @include color-palette($background, $color);
+  }
+  // background color
+  // --------------
+  .background-color-#{$prefix} {
+    background-color: $background;
+  }
+  // border color
+  // --------------
+  .border-#{$prefix} {
+    border-color: $background;
+  }
+  // text color
+  // --------------
+  .color-#{$prefix} {
+    color: $background;
+  }
+}
+
+// adjust button scale
+// ----------------
+@mixin adjust-button($ui-font-size-scale, $ui-line-height-scale, $ui-height-scale, $ui-padding-scale) {
+  .button-icon,
+  .button-title {
+    font-size: $ui-font-size-scale;
+    line-height: $ui-line-height-scale;
+    height: $ui-height-scale;
+  }
+  .button-icon {
+    width: $ui-height-scale;
+    padding: $ui-padding-scale 0;
+    + .button-title {
+      padding-left: 0;
+    }
+  }
+  .button-title {
+    padding: $ui-padding-scale $ui-padding-scale * 3;
+    + .button-icon {
+      margin-left: -($ui-padding-scale * 3);
+    }
+  }
+}
+
+// adjust nav scale
+// ----------------
+@mixin adjust-nav($ui-font-size-scale, $ui-line-height-scale, $ui-height-scale, $ui-padding-scale) {
+  >li > .nav-link {
+    .nav-icon,
+    .nav-title {
+      font-size: $ui-font-size-scale;
+      line-height: $ui-line-height-scale;
+      height: $ui-height-scale;
+    }
+    .nav-icon {
+      width: $ui-height-scale;
+      padding: $ui-padding-scale 0;
+      + .nav-title {
+        padding-left: 0;
+      }
+    }
+    .nav-title {
+      padding: $ui-padding-scale $ui-padding-scale * 3;
+      + .nav-icon {
+        margin-left: -($ui-padding-scale * 3);
+      }
+    }
+  }
+}
+
+// adjust input scale
+// ----------------
+@mixin adjust-input($ui-font-size-scale, $input-height-scale, $ui-line-height-scale, $ui-padding-scale) {
+  font-size: $ui-font-size-scale;
+  height: $input-height-scale;
+  line-height: $ui-line-height-scale;
+  padding: $ui-padding-scale $ui-padding-scale * 2;
+}

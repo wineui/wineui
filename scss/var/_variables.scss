@@ -1,0 +1,228 @@
+// this file part of wine ui 1.0.1
+// ----------------
+
+// color palette
+// ----------------
+$red                    : #ed5565;
+$red-over               : #da4453;
+$orange                 : #fc6e51;
+$orange-over            : #e9573f;
+$yellow                 : #ffce54;
+$yellow-over            : #f6bb42;
+$greenlight             : #a0d468;
+$greenlight-over        : #8cc152;
+$green                  : #48cfad;
+$green-over             : #37bc9b;
+$bluelight              : #4fc1e9;
+$bluelight-over         : #3bafda;
+$blue                   : #5d9cec;
+$blue-over              : #4a89dc;
+$purple                 : #ac92ec;
+$purple-over            : #967adc;
+$pink                   : #ec87c0;
+$pink-over              : #d770ad;
+$graylight              : #f5f7fa;
+$graylight-over         : #e6e9ed;
+$gray                   : #ccd1d9;
+$gray-over              : #aab2bd;
+$dark                   : #656d78;
+$dark-over              : #434a54;
+$white                  : #ffffff;
+$white-over             : #f0f2f5;
+$black                  : #434950;
+$black-over             : #32363c;
+
+// font family
+// ----------------
+$helvetica              : "Helvetica Neue", Helvetica, Arial, sans-serif;
+$monaco                 : Monaco, Consolas, "Lucida Console", monospace;
+$georgia                : Georgia, Times, "Times New Roman", serif;
+
+// base typography
+// ----------------
+$font-size              : 14px;
+$line-height            : 22.652px;
+$font-family            : Roboto, $helvetica;
+
+// base body
+// ----------------
+$body-background        : $white;
+$body-color             : $black;
+
+// base headings
+// ----------------
+$heading-font-weight    : 300;
+
+// base border
+// ----------------
+$border-width           : 1px;
+$border-radius          : 3px;
+
+// base padding
+// ----------------
+$padding                : 15px;
+
+// base media
+// ----------------
+$media-phone            : 480px;
+$media-tablet           : 1024px;
+$media-desktop          : 1280px;
+
+// base grid layout
+// ----------------
+$grid-column            : 12;
+$grid-gutter            : 30px;
+$grid-screen            : 100%;
+
+// strip unit
+// ----------------
+@function strip($value) {
+	@return $value / ($value * 0 + 1);
+}
+
+// convert em, % to px
+// ----------------
+@function px($value, $parent-value: $font-size) {
+	// 0.857142857143 * 14 = 12.0 
+	// 85.7142857143 / 100 * 14 = 12.0
+	$result: 0px;
+	@if unit($value) == "em" { $result: strip($value) * strip($parent-value); }
+	@elseif unit($value) == "%" { $result: strip($value) / 100 * strip($parent-value); }
+	@else { $result: strip($value); }
+	@return $result + 0px;
+}
+
+// convert px, % to em
+// ----------------
+@function em($value, $parent-value: $font-size) {
+	// 12/14.0 = 0.857142857143
+	// 85.7142857143 / 100 = 0.857142857143
+	$result: 0em;
+	@if unit($value) == "px" { $result: strip($value) / strip($parent-value); }
+	@elseif unit($value) == "%" { $result: strip($value) / 100; }
+	@else { $result: strip($value); }
+	@return $result + 0em;
+}
+
+// convert px, em to %
+// ----------------
+@function percent($value, $parent-value: $font-size) {
+	// 12/14.0*100 = 85.7142857143
+	// 0.857142857143*100 = 85.7142857143
+	$result: 0em;
+	@if unit($value) == "px" { $result: strip($value) / strip($parent-value) * 100; }
+	@elseif unit($value) == "em" { $result: strip($value) * 100; }
+	@else { $result: strip($value); }
+	@return $result + 0%;
+}
+
+// increase or decrease value
+// ----------------
+@function tfsid($value, $value-scale, $increase: true) {
+	$result: 0px;
+	@if $increase == true { $result: strip($value) + $value-scale; }
+	@else { $result: strip($value) - $value-scale; }
+	@return $result + 0px;
+}
+
+// scaling font size
+// ----------------
+@function tfs($value, $increase: true) {
+	@if strip($value) >= 18 {
+		@if strip($value) >= 24 { @return tfsid($value, 12, $increase); }
+		@else { @return tfsid($value, 3, $increase); }
+	}
+	@else {
+		@if strip($value) >= 13 { @return tfsid($value, 2, $increase); }
+		@else { @return tfsid($value, 1, $increase); }
+	}
+}
+
+// scaling line height
+// ----------------
+@function tlh($value, $base-line-height: $line-height, $base-font-size: $font-size) {
+	@return $base-line-height / $base-font-size * $value;
+}
+
+// scaling margin
+// ----------------
+@function tm($value, $base-line-height: $line-height, $base-font-size: $font-size) {
+	@return em((strip($base-line-height) / strip($value)) / (strip($value) / strip($base-font-size)));
+}
+
+// typography font size
+// ----------------
+$font-size-p            : $font-size;
+$font-size-small        : tfs($font-size-p, false); 
+$font-size-smaller      : tfs($font-size-small, false); 
+$font-size-h6           : tfs($font-size-p); 
+$font-size-h5           : tfs($font-size-h6); 
+$font-size-h4           : tfs($font-size-h5); 
+$font-size-h3           : tfs($font-size-h4); 
+$font-size-h2           : tfs($font-size-h3); 
+$font-size-h1           : tfs($font-size-h2); 
+$font-size-large        : tfs($font-size-h1); 
+$font-size-larger       : tfs($font-size-large); 
+
+// typography line height
+// ----------------
+$line-height-p          : tlh($font-size-p);
+$line-height-small      : tlh($font-size-small);
+$line-height-smaller    : tlh($font-size-smaller);
+$line-height-h6         : tlh($font-size-h6);
+$line-height-h5         : tlh($font-size-h5);
+$line-height-h4         : tlh($font-size-h4);
+$line-height-h3         : tlh($font-size-h3);
+$line-height-h2         : tlh($font-size-h2);
+$line-height-h1         : tlh($font-size-h1);
+$line-height-large      : tlh($font-size-large);
+$line-height-larger     : tlh($font-size-larger);
+
+// typography margin
+// ----------------
+$margin-p               : tm($font-size-p);
+$margin-small           : tm($font-size-small);
+$margin-smaller         : tm($font-size-smaller);
+$margin-h6              : tm($font-size-h6);
+$margin-h5              : tm($font-size-h5);
+$margin-h4              : tm($font-size-h4);
+$margin-h3              : tm($font-size-h3);
+$margin-h2              : tm($font-size-h2);
+$margin-h1              : tm($font-size-h1);
+$margin-large           : tm($font-size-large);
+$margin-larger          : tm($font-size-larger);
+
+// base ui
+// ----------------
+$ui-font-size-smaller   : $font-size-smaller;
+$ui-line-height-smaller : round($line-height-smaller);
+$ui-padding-smaller     : 2px;
+$ui-height-smaller      : $ui-line-height-smaller + $ui-padding-smaller * 2;
+
+$ui-font-size-small     : $font-size-small;
+$ui-line-height-small   : round($line-height-small);
+$ui-padding-small       : $ui-padding-smaller + 2px;
+$ui-height-small        : $ui-line-height-small + $ui-padding-small * 2;
+
+$ui-font-size-initial   : $font-size-p;
+$ui-line-height-initial : round($line-height-p);
+$ui-padding-initial     : $ui-padding-small + 2px;
+$ui-height-initial      : $ui-line-height-initial + $ui-padding-initial * 2;
+
+$ui-font-size-medium    : $font-size-h6;
+$ui-line-height-medium  : round($line-height-h6);
+$ui-padding-medium      : $ui-padding-initial + 2px;
+$ui-height-medium       : $ui-line-height-medium + $ui-padding-medium * 2;
+
+$ui-font-size-large     : $font-size-h5;
+$ui-line-height-large   : round($line-height-h5);
+$ui-padding-large       : $ui-padding-medium + 2px;
+$ui-height-large        : $ui-line-height-large + $ui-padding-large * 2;
+
+// base input
+// ----------------
+$input-height-smaller   : $ui-height-smaller + $border-width * 2;         
+$input-height-small     : $ui-height-small + $border-width * 2;       
+$input-height-initial   : $ui-height-initial + $border-width * 2;         
+$input-height-medium    : $ui-height-medium + $border-width * 2;        
+$input-height-large     : $ui-height-large + $border-width * 2;       

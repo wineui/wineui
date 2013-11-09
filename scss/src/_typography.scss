@@ -1,0 +1,224 @@
+// this file part of wine ui 1.0.1
+// ----------------
+
+// body
+// ----------------
+body {
+  background-color: $body-background;
+  color: $body-color;
+  font: {
+    size: percent($font-size, 16);
+    family: $font-family;
+  };
+  line-height: percent($line-height);
+}
+
+// paragraph
+// ----------------
+
+p, .text-p {
+  font-size: percent($font-size-p);
+  line-height: percent($line-height-p);
+  margin: 0 0 $margin-p 0;
+}
+
+// headings
+// ----------------
+
+h6, .text-h6,
+h5, .text-h5,
+h4, .text-h4,
+h3, .text-h3,
+h2, .text-h2,
+h1, .text-h1 {
+  font-weight: $heading-font-weight;
+}
+
+h6, .text-h6 {
+  font-size: percent($font-size-h6);
+  line-height: percent($line-height-h6, $font-size-h6);
+  margin: $margin-h6 0;
+}
+
+h5, .text-h5 {
+  font-size: percent($font-size-h5);
+  line-height: percent($line-height-h5, $font-size-h5);
+  margin: $margin-h5 0;
+}
+
+h4, .text-h4 {
+  font-size: percent($font-size-h4);
+  line-height: percent($line-height-h4, $font-size-h4);
+  margin: $margin-h4 0;
+}
+
+h3, .text-h3 {
+  font-size: percent($font-size-h3);
+  line-height: percent($line-height-h3, $font-size-h3);
+  margin: $margin-h3 0;
+}
+
+h2, .text-h2 {
+  font-size: percent($font-size-h2);
+  line-height: percent($line-height-h2, $font-size-h2);
+  margin: $margin-h2 0;
+}
+
+h1, .text-h1 {
+  font-size: percent($font-size-h1);
+  line-height: percent($line-height-h1, $font-size-h1);
+  margin: $margin-h1 0;
+}
+
+// semantics
+// ----------------
+
+small, .text-small {
+  font-size: percent($font-size-small);
+  line-height: percent($line-height-small, $font-size-small);
+  margin: 0 0 $margin-small 0;
+}
+
+// lists
+// ----------------
+ul {
+  list-style-type: square;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+ul,
+ol {
+  margin: 0 0 em($line-height) 0;
+  padding: 0 0 0 em($line-height);
+  ul,
+  ol {
+    margin: 0;
+  }
+}
+
+// lists style
+// ----------------
+.list-inline,
+.list-no-style {
+  list-style-type: none;
+  padding: 0;
+}
+
+.list-inline {
+  &:before,
+  &:after {
+    content: '';
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+  li {
+    float: left;
+  }
+}
+
+// horizontal lines
+// ----------------
+hr {
+  margin: em($line-height) 0;
+  border: {
+    color: $gray;
+    style: solid;
+    width: 0 0 $border-width 0;
+  };
+}
+
+// anchor
+// ----------------
+a {}
+
+// text scale
+// ----------------
+.text-smaller {
+  font-size: percent($font-size-smaller);
+  line-height: percent($line-height-smaller, $font-size-smaller);
+  margin: 0 0 $margin-smaller 0;
+}
+
+.text-larger {
+  font-size: percent($font-size-larger);
+  line-height: percent($line-height-larger, $font-size-larger);
+  margin: $margin-larger 0;
+}
+
+.text-large {
+  font-size: percent($font-size-large);
+  line-height: percent($line-height-large, $font-size-large);
+  margin: $margin-large 0;
+}
+
+.text-larger,
+.text-large {
+  font-family: 'Droid Sans', $font-family;
+}
+
+// text and vertical align
+// ----------------
+.align:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.align-top,
+.align-bottom,
+.align-middle {
+  display: inline-block;
+  max-width: 90%;
+}
+
+.align-top {
+  vertical-align: top;
+}
+
+.align-bottom {
+  vertical-align: bottom;
+}
+
+.align-middle {
+  vertical-align: middle;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-justify {
+  text-align: justify;
+}
+
+// font weight
+// ----------------
+.text-lighter {
+  font-weight: 100;
+}
+
+.text-normal {
+  font-weight: 400;
+}
+
+.text-bold {
+  font-weight: 500;
+}
+
+.text-bolder {
+  font-weight: 700;
+}

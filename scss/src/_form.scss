@@ -1,0 +1,198 @@
+// this file part of wine ui 1.0.1
+// ----------------
+
+// form
+// ----------------
+form {
+  .row {
+    [class^="col-"] {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}
+
+// form row
+// ----------------
+.form-row {
+  margin: 0 0 em($padding) 0;
+}
+
+// label, input, textarea
+// ----------------
+
+.form-required,
+.form-valid,
+.form-invalid,
+label,
+input,
+select,
+textarea {
+  display: block;
+  position: relative;
+  vertical-align: middle;
+  width: 100%;
+}
+
+// label
+// ----------------
+
+.form-required,
+.form-valid,
+.form-invalid,
+label {
+  line-height: $ui-line-height-small;
+  padding: $ui-padding-initial + ($ui-line-height-initial - $ui-line-height-small) / 2 + $border-width 0;
+  font: {
+    size: $ui-font-size-small;
+    weight: 500;
+  };
+}
+
+// input
+// ----------------
+
+input,
+select,
+textarea {
+  @include box-shadow(inset 0 1px 0 0 rgba($black, 0.1));
+  background-color: $white;
+  height: $input-height-initial;
+  line-height: $ui-line-height-initial;
+  padding: $ui-padding-initial $ui-padding-initial * 2;
+  font: {
+    family: inherit;
+    size: $ui-font-size-initial;
+  };
+  border: {
+    color: $gray;
+    width: $border-width;
+    style: solid;
+  };
+  // focus
+  // --------------
+  &:focus {
+    outline: none;
+    border-color: $gray-over;
+  }
+  // validation
+  // --------------
+  &[required] {
+    &:valid {
+      border-color: $green;
+    }
+    &:invalid {
+      border-color: $red;
+    }
+  }
+}
+
+// input scale
+// ----------------
+.input-smaller {
+  @include adjust-input($ui-font-size-smaller, $input-height-smaller, $ui-line-height-smaller, $ui-padding-smaller);
+}
+
+.input-small {
+  @include adjust-input($ui-font-size-small, $input-height-small, $ui-line-height-small, $ui-padding-small);
+}
+
+.input-medium {
+  @include adjust-input($ui-font-size-medium, $input-height-medium, $ui-line-height-medium, $ui-padding-medium);
+}
+
+.input-large {
+  @include adjust-input($ui-font-size-large, $input-height-large, $ui-line-height-large, $ui-padding-large);
+}
+
+input {
+  &[type="date"],
+  &[type="month"],
+  &[type="week"],
+  &[type="time"],
+  &[type="datetime"],
+  &[type="datetime-local"],
+  &[type="number"] {
+    padding-right: $ui-padding-initial;
+  }
+}
+
+// select
+// ----------------
+
+select.input-smaller,
+select.input-small,
+select.input-medium,
+select.input-large,
+select {
+  padding-right: $ui-padding-initial;
+}
+
+// textarea
+// ----------------
+textarea {
+  resize: none;
+}
+
+select[multiple],
+textarea {
+  height: auto;
+  vertical-align: top;
+}
+
+// form validation
+// ----------------
+.form-validation {
+  input,
+  textarea,
+  select {
+    &[required] {
+      + .form-aside {
+        .form-required {
+          display: block;
+        }
+        .form-invalid {
+          display: none;
+        }
+      }
+      &:valid {
+        + .form-aside {
+          .form-valid {
+            display: block;
+          }
+          .form-required {
+            display: none;
+          }
+        }
+      }
+      &:focus:invalid {
+        + .form-aside {
+          .form-invalid {
+            display: block;
+          }
+          .form-required {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+.form-required,
+.form-valid,
+.form-invalid {
+  display: none;
+}
+
+.form-required {
+  color: $yellow;
+}
+
+.form-valid {
+  color: $green;
+}
+
+.form-invalid {
+  color: $red;
+}

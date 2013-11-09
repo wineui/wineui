@@ -1,0 +1,208 @@
+// this file part of wine ui 1.0.1
+// ----------------
+
+// float and clear
+// ----------------
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.float-none {
+  float: none;
+}
+
+.clear-left,
+.clear-right,
+.clear-both {
+  &:before,
+  &:after {
+    content: '';
+    display: table;
+  }
+}
+
+.clear-left:after {
+  clear: left;
+}
+
+.clear-right:after {
+  clear: right;
+}
+
+.clear-both:after {
+  clear: both;
+}
+
+// fixed
+// ----------------
+
+.fixed-top,
+.fixed-right,
+.fixed-bottom,
+.fixed-left {
+  position: fixed;
+  z-index: 10000;
+}
+
+.fixed-top {
+  top: 0;
+  width: 100%;
+}
+
+.fixed-right {
+  right: 0;
+  height: 100%;
+}
+
+.fixed-bottom {
+  bottom: 0;
+  width: 100%;
+}
+
+.fixed-left {
+  left: 0;
+  height: 100%;
+}
+
+// remove margin
+// ----------------
+.no-margin {
+  margin: 0 !important;
+}
+
+.no-margin-left-right {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.no-margin-top-bottom {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.no-margin-left {
+  margin-left: 0 !important;
+}
+
+.no-margin-right {
+  margin-right: 0 !important;
+}
+
+.no-margin-top {
+  margin-top: 0 !important;
+}
+
+.no-margin-bottom {
+  margin-bottom: 0 !important;
+}
+
+// remove padding
+// ----------------
+.no-padding {
+  padding: 0 !important;
+}
+
+.no-padding-left-right {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.no-padding-top-bottom {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.no-padding-left {
+  padding-left: 0 !important;
+}
+
+.no-padding-right {
+  padding-right: 0 !important;
+}
+
+.no-padding-top {
+  padding-top: 0 !important;
+}
+
+.no-padding-bottom {
+  padding-bottom: 0 !important;
+}
+
+// visibility
+// ----------------
+
+.visible-desktop,
+.visible-tablet,
+.visible-phone {
+  display: none !important;
+}
+
+.hidden-desktop,
+.hidden-tablet,
+.hidden-phone {
+  display: block !important;
+}
+
+@include media(desktop) {
+  .visible-desktop {
+    display: block !important;
+  }
+  .hidden-desktop {
+    display: none !important;
+  }
+}
+
+
+@include media(tablet) {
+  .visible-tablet {
+    display: block !important;
+  }
+  .hidden-tablet {
+    display: none !important;
+  }
+}
+
+
+@include media(phone) {
+  .visible-phone {
+    display: block !important;
+  }
+  .hidden-phone {
+    display: none !important;
+  }
+}
+
+// color palette
+// ----------------
+@include color('red'             , $red             , $red-over        , $white);
+@include color('red-over'        , $red-over        , $red             , $white);
+@include color('orange'          , $orange          , $orange-over     , $white);
+@include color('orange-over'     , $orange-over     , $orange          , $white);
+@include color('yellow'          , $yellow          , $yellow-over     , $white);
+@include color('yellow-over'     , $yellow-over     , $yellow          , $white);
+@include color('greenlight'      , $greenlight      , $greenlight-over , $white);
+@include color('greenlight-over' , $greenlight-over , $greenlight      , $white);
+@include color('green'           , $green           , $green-over      , $white);
+@include color('green-over'      , $green-over      , $green           , $white);
+@include color('bluelight'       , $bluelight       , $bluelight-over  , $white);
+@include color('bluelight-over'  , $bluelight-over  , $bluelight       , $white);
+@include color('blue'            , $blue            , $blue-over       , $white);
+@include color('blue-over'       , $blue-over       , $blue            , $white);
+@include color('purple'          , $purple          , $purple-over     , $white);
+@include color('purple-over'     , $purple-over     , $purple          , $white);
+@include color('pink'            , $pink            , $pink-over       , $white);
+@include color('pink-over'       , $pink-over       , $pink            , $white);
+@include color('graylight'       , $graylight       , $graylight-over  , $black);
+@include color('graylight-over'  , $graylight-over  , $graylight       , $black);
+@include color('gray'            , $gray            , $gray-over       , $black);
+@include color('gray-over'       , $gray-over       , $gray            , $black);
+@include color('dark'            , $dark            , $dark-over       , $white);
+@include color('dark-over'       , $dark-over       , $dark            , $white);
+@include color('white'           , $white           , $white-over      , $black);
+@include color('white-over'      , $white-over      , $white           , $black);
+@include color('black'           , $black           , $black-over      , $white);
+@include color('black-over'      , $black-over      , $black           , $white);

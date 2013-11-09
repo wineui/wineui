@@ -1,0 +1,148 @@
+// this file part of wine ui 1.0.1
+// ----------------
+
+// panel
+// ----------------
+
+.panel,
+.panel-header,
+.panel-body,
+.panel-footer {
+  position: relative;
+}
+
+.panel {
+  @include color-palette($graylight, $black);
+  @include box-shadow(0 1px 0 1px rgba($black, 0.1));
+  margin: 0 0 em($padding) 0;
+}
+
+.panel-header,
+.panel-body,
+.panel-footer {
+  background-color: inherit;
+  padding: $padding - $padding / 3 $padding;
+  border: {
+    color: inherit;
+    width: $border-width;
+    style: solid;
+  };
+}
+
+.panel-body {
+  overflow: auto;
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// panel property
+// ----------------
+
+.panel-tools,
+.panel-icon,
+.panel-title {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+}
+
+.panel-icon,
+.panel-title,
+.panel-tools {
+  font-size: $ui-font-size-initial;
+  line-height: $ui-line-height-initial;
+  padding: $ui-padding-initial 0;
+  [class^="icon-"] {
+    font-size: percent($font-size-h6);
+    top: -1px;
+  }
+}
+
+.panel-icon {
+  text-align: center;
+  width: $ui-height-initial;
+}
+
+.panel-title {
+  font-weight: 500;
+  + .panel-icon {
+    margin-left: -($ui-padding-initial * 3);
+  }
+}
+
+.panel-tools {
+  position: absolute;
+  right: $ui-padding-initial * 3;
+  top: $padding - $padding / 3 - $border-width;
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+// panel component
+// ----------------
+.panel-aside {
+  font-size: 0;
+  line-height: 0;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  // modified panel title
+  // --------------
+  .panel-title {
+    padding-bottom: 0;
+  }
+}
+
+.panel-meta {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  &:before,
+  &:after {
+    content: '';
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+  > li {
+    float: left;
+    margin: 0 $padding / 3 0 0;
+    &:last-child {
+      margin: 0;
+    }
+    > a {
+      display: inline-block;
+      vertical-align: middle;
+      color: inherit;
+      text-decoration: none;
+      line-height: $ui-line-height-small;
+      font-size: $ui-font-size-small;
+      padding: $ui-padding-small 0;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.panel-user {
+  @include border-radius(50%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  height: $ui-line-height-initial + $ui-padding-initial + $ui-line-height-small + ($ui-padding-small * 2);
+  width: $ui-line-height-initial + $ui-padding-initial + $ui-line-height-small + ($ui-padding-small * 2);
+  margin: 0 $padding - $padding / 3 0 0;
+}
+
+.panel-embedded {
+  height: 256px;
+  overflow: hidden;
+}

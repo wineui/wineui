@@ -1,0 +1,114 @@
+// this file part of wine ui 1.0.1
+// ----------------
+
+// navbar
+// ----------------
+.navbar {
+  &:before,
+  &:after {
+    content: '';
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+  @include color-palette($gray, $black);
+  @include box-shadow(0 1px 0 1px rgba($black, 0.1));
+  padding: $padding 0;
+  &:not(.navbar-inline) {
+    .navbar-aside {
+      margin: 0 0 $padding 0;
+    }
+  }
+}
+
+// navbar aside
+// ----------------
+.navbar-aside {
+  font-size: 0;
+  line-height: 0;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  padding: 0 $padding;
+}
+
+// navbar title
+// ----------------
+.navbar-brand {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  color: inherit;
+  text-decoration: none;
+  font: {
+    size: $font-size-h3;
+    family: "grand hotel", $helvetica;
+  };
+  line-height: $ui-height-initial;
+}
+
+// navbar user
+// ----------------
+.navbar-user {
+  @include border-radius(50%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  height: $ui-height-initial;
+  width: $ui-height-initial;
+  margin: 0 $padding - $padding / 3 0 0;
+}
+
+// navbar prev and next button
+// ----------------
+.navbar-prev {
+  float: left;
+}
+
+.navbar-next {
+  float: right;
+}
+
+.navbar-prev,
+.navbar-next {
+  display: block;
+  // navbar prev and next only show beside desktop screen
+  // --------------
+  @include media(desktop) {
+    display: none;
+  }
+}
+
+// navbar nav
+// ----------------
+.navbar-nav {
+  float: right;
+  display: none;
+  // navbar nav only show on desktop screen
+  // --------------
+  @include media(desktop) {
+    display: block;
+  }
+}
+
+// navbar inline
+// ----------------
+.navbar-inline {
+  text-align: center;
+  padding: $padding;
+  > .navbar-brand {
+    padding: 0 $ui-padding-initial * 3;
+  }
+}
+
+// navbar center
+// ----------------
+.navbar-center {
+  @include media(desktop) {
+    float: left;
+  }
+}

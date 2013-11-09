@@ -1,0 +1,29 @@
+// this file part of wine ui 1.0.1
+// ----------------
+
+// image
+// ----------------
+img, .image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+// image style
+// ----------------
+.image-circle {
+  @include border-radius(50%);
+}
+
+.image-rounded {
+  @include border-radius($ui-height-initial);
+}
+
+.image-pills {
+  @include border-radius($border-radius);
+}

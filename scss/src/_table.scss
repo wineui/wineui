@@ -1,0 +1,77 @@
+// this file part of wine ui 1.0.1
+// ----------------
+
+// table
+// ----------------
+table {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+tr {
+  &:first-child {
+    th {
+      border-top-width: 0;
+    }
+  }
+  &:last-child {
+    td {
+      border-bottom-width: 0;
+    }
+  }
+}
+
+th {
+  font-weight: 500;
+}
+
+th,
+td {
+  line-height: $ui-line-height-initial;
+  overflow: hidden;
+  padding: $ui-padding-initial $ui-padding-initial * 2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font: {
+    family: inherit;
+    size: $ui-font-size-initial;
+  }
+  border: {
+    color: $gray;
+    width: $border-width 0;
+    style: solid;
+  }
+}
+
+// table style
+// ----------------
+.table-striped {
+  tr {
+    &:nth-child(odd) {
+      td {
+        background-color: $graylight;
+      }
+    }
+  }
+}
+
+.table-bordered {
+  tr {
+    th,
+    td {
+      border-width: $border-width;
+    }
+  }
+}
+
+.table-hover {
+  tr {
+    &:hover {
+      cursor: pointer;
+      td {
+        background-color: $gray;
+      }
+    }
+  }
+}

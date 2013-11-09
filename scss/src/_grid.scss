@@ -1,0 +1,42 @@
+// this file part of wine ui 1.0.1
+// ----------------
+
+// grid
+// ----------------
+.row {
+	&:before,
+	&:after {
+	  content: '';
+	  display: table;
+	}
+	&:after {
+	  clear: both;
+	}
+}
+
+// column
+// ----------------
+.col {
+	float: left;
+	padding-left: $grid-gutter / 2;
+	padding-right: $grid-gutter / 2;
+}
+
+@for $value from 1 through $grid-column {
+	.col-#{$value} {
+		@extend .col;
+		width: $grid-screen / $grid-column * $value;
+	}
+	.push-#{$value} {
+		margin-left: $grid-screen / $grid-column * $value;
+	}
+	.pull-#{$value} {
+		margin-right: $grid-screen / $grid-column * $value;
+	}
+}
+
+// responsive grid
+// ----------------
+@include grid-media(desktop);
+@include grid-media(tablet);
+@include grid-media(phone);

@@ -1,0 +1,144 @@
+// this file part of wine ui 1.0.1
+// ----------------
+
+// base button
+// ----------------
+
+.button,
+.button-icon,
+.button-group,
+.button-justify,
+.button-title {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+}
+
+// button
+// ----------------
+.button {
+  font-size: 0;
+  line-height: 0;
+  padding: 0;
+  margin: 0;
+  font: {
+    family: inherit;
+    weight: 500;
+  };
+  border: {
+    width: $border-width;
+    style: solid;
+  };
+  text: {
+    align: center;
+    decoration: none;
+  };
+  white-space: nowrap;
+  @include color-button($gray, $gray-over, $black);
+  @include user-select(none);
+  &:hover, &.active {
+    cursor: pointer;
+  }
+  &:active {
+    cursor: wait;
+  }
+  &[disabled], &.disabled {
+    cursor: not-allowed;
+  }
+}
+
+// button property
+// ----------------
+
+.button-icon,
+.button-title {
+  font-size: $ui-font-size-initial;
+  line-height: $ui-line-height-initial;
+  height: $ui-height-initial;
+  [class^="icon-"] {
+    font-size: percent($font-size-h6);
+    top: -1px;
+  }
+}
+
+.button-icon {
+  text-align: center;
+  width: $ui-height-initial;
+  padding: $ui-padding-initial 0;
+  + .button-title {
+    padding-left: 0;
+  }
+}
+
+.button-title {
+  padding: $ui-padding-initial $ui-padding-initial * 3;
+  + .button-icon {
+    margin-left: -($ui-padding-initial * 3);
+  }
+}
+
+// button scale
+// ----------------
+.button-smaller {
+  @include adjust-button($ui-font-size-smaller, $ui-line-height-smaller, $ui-height-smaller, $ui-padding-smaller);
+}
+
+.button-small {
+  @include adjust-button($ui-font-size-small, $ui-line-height-small, $ui-height-small, $ui-padding-small);
+}
+
+.button-medium {
+  @include adjust-button($ui-font-size-medium, $ui-line-height-medium, $ui-height-medium, $ui-padding-medium);
+}
+
+.button-large {
+  @include adjust-button($ui-font-size-large, $ui-line-height-large, $ui-height-large, $ui-padding-large);
+}
+
+.button-medium,
+.button-large {
+  font-weight: 400;
+}
+
+// button style
+// ----------------
+.button-plain {
+  background-color: transparent;
+  border-color: transparent;
+  color: inherit;
+}
+
+.button-lines {
+  background-color: transparent;
+  color: inherit;
+}
+
+.button-circle {
+  @include border-radius(50%);
+}
+
+.button-rounded {
+  @include border-radius($ui-height-initial);
+}
+
+.button-pills {
+  @include border-radius($border-radius);
+}
+
+// button group
+// ----------------
+.button-group {
+  font-size: 0;
+  line-height: 0;
+}
+
+// button justify
+// ----------------
+.button-justify {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  .button {
+    display: table-cell;
+  }
+}
